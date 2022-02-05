@@ -1,6 +1,6 @@
 .Game-body {
   display: flex;
-  background-color: #777777;
+  background-color: rgb(200, 200, 200);
   align-items: center;
   justify-content: center;
   width: 100vw;

@@ -8,14 +8,16 @@ const GOOGLE_CLIENT_ID = "570463222219-lgt7qokso77i4ld5qsjq6ijfvfgapg3p.apps.goo
 const Login = ({ handleLogin }) => {
   return (
     <div className="Login-body">
-      <div className="Login-title">testing</div>
-      <GoogleLogin
-        clientId={GOOGLE_CLIENT_ID}
-        buttonText="Login"
-        onSuccess={handleLogin}
-        onFailure={(err) => console.log(err)}
-        theme="dark"
-      />
+      <div className="Login-centerBox">
+        <div className="Login-title">Play Guitar</div>
+        <GoogleLogin
+          clientId={GOOGLE_CLIENT_ID}
+          buttonText="Login"
+          onSuccess={handleLogin}
+          onFailure={(err) => console.log(err)}
+          theme="light"
+        />
+      </div>
     </div>
   );
 };

@@ -4,12 +4,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: grey;
+  background-color: rgb(248, 206, 153);
   flex-direction: column;
 }
 
+.Login-centerBox {
+  width: 40vw;
+  height: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(254, 203, 78);
+  flex-direction: column;
+  border-radius: 4vmin;
+  border-style: solid;
+  border-color: rgb(99, 55, 47);
+  border-width: 1vmin;
+  font-family: "Rancho", cursive;
+}
+
 .Login-title {
-  font-size: 32px;
-  color: white;
-  margin-bottom: 30px;
+  font-size: 10vw;
+  color: rgb(99, 55, 47);
+  margin-bottom: 2.5vmin;
 }
