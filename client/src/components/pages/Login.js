@@ -4,7 +4,6 @@ import "./Login.css";
 
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 const GOOGLE_CLIENT_ID = "570463222219-lgt7qokso77i4ld5qsjq6ijfvfgapg3p.apps.googleusercontent.com";
-
 const Login = ({ handleLogin }) => {
   return (
     <div className="Login-body">
