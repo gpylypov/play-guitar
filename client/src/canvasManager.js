@@ -1,5 +1,5 @@
 let canvas;
-const SPEED_OF_CHORDS = 0.2; //fraction of canvas per second
+const SPEED_OF_CHORDS = 0.3; //fraction of canvas per second
 const IMAGE_WIDTH_MULT = 0.07;
 const TEXT_HEIGHT_MULT = 0.05;
 const BORDER_WIDTH = 5;

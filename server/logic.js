@@ -1,5 +1,6 @@
 const UPDATES_PER_SEC = 60;
-const PLAY_DELAY = 15;
+const PLAY_DELAY = 10;
+const SECONDS_BEFORE_DELETE = 6;
 
 const webState = {
   players: [], // {uid: userid, waiting: how many more frames till can play another chord}
@@ -52,9 +53,15 @@ const playChord = (id, chord) => {
 };
 
 const updateWebState = () => {
-  for (let i = 0; i < webState.chord_queue.length; i++) {
+  for (let i = webState.chord_queue.length - 1; i >= 0; i--) {
     webState.chord_queue[i].when += 1 / UPDATES_PER_SEC;
+    if (webState.chord_queue[i].when > SECONDS_BEFORE_DELETE) {
+      webState.chord_queue.splice(i, 1);
+    }
   }
+  // for (let i = 0; i < webState.chord_queue.length; i++) {
+  //   webState.chord_queue[i].when += 1 / UPDATES_PER_SEC;
+  // }
   for (let j = 0; j < webState.players.length; j++) {
     if (webState.players[j].waiting > 0) {
       webState.players[j].waiting -= 1;
@@ -63,7 +70,13 @@ const updateWebState = () => {
 };
 
 //removes chords that are too long ago?
-const removeChord = (chord_index) => {};
+const removeChord = (chord_index) => {
+  for (let i = webState.chord_queue.length - 1; i >= 0; i--) {
+    if (webState.chord_queue[i].when > 10) {
+      webState.chord_queue = webState.chord_queue;
+    }
+  }
+};
 
 module.exports = {
   webState,

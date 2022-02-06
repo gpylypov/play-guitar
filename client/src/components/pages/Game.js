@@ -8,9 +8,9 @@ import { drawCanvas, initCanvas } from "../../canvasManager";
 
 const Game = () => {
   var width =
-    window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    document.body.clientWidth || document.documentElement.clientWidth || window.innerWidth;
   var height =
-    window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    document.body.clientHeight || document.documentElement.clientHeight || window.innerHeight;
   useEffect(() => {
     initCanvas();
   }, []);
@@ -22,6 +22,7 @@ const Game = () => {
 
   const processUpdate = (update) => {
     drawCanvas(update);
+    console.log(update.chord_queue.length);
   };
   return (
     <>
