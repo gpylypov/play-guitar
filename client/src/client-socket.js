@@ -13,7 +13,7 @@ export const emitChord = (chord) => {
 };
 */
 
-export const socket = new WebSocket('ws://localhost:3000');
+export const socket = new WebSocket('ws://play-guitar.herokuapp.com');
 
 export const emitChord = (chord) => {
   console.log(chord);
