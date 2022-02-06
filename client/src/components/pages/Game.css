@@ -1,19 +1,20 @@
 .Game-body {
   display: flex;
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(248, 206, 153);
   align-items: center;
   justify-content: center;
   width: 100vw;
   height: 100vh;
   position: relative;
 }
-
-.Game-winner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 40px;
-  background-color: #333333;
-  color: white;
+.Game-canvasContainer {
+  display: flex;
+  background-color: rgb(248, 206, 153);
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  border-style: solid;
+  border-color: rgb(99, 55, 47);
 }

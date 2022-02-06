@@ -26,7 +26,7 @@ const Game = () => {
   return (
     <>
       <div className="Game-body">
-        <canvas id="game-canvas" width={0.95 * width} height={0.9 * height} />
+        <canvas id="game-canvas" width={0.9 * width} height={0.9 * height} />
       </div>
     </>
   );
