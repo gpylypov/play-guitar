@@ -2,6 +2,7 @@ import { emitChord } from "./client-socket";
 
 /** add other controls here */
 const handleInput = (e) => {
+  /*
   if (e.key === "A") {
     console.log("A major");
     emitChord(["x", 0, 2, 2, 2, 0]);
@@ -44,6 +45,20 @@ const handleInput = (e) => {
   } else if (e.key === "g") {
     console.log("G minor");
     emitChord([3, 5, 5, 3, 3, 3]);
+  }
+  */
+    console.log("KEY PRESS");
+    console.log(e.key);
+  if (e.key === "1") {
+    emitChord([0, "x", "x", "x", "x", "x"]);
+  } else if (e.key === "2") {
+    emitChord(["x", 0, "x", "x", "x", "x"]);
+  } else if (e.key === "3") {
+    emitChord(["x", "x", 0, "x", "x", "x"]);
+  } else if (e.key === "4") {
+    emitChord(["x", "x", "x", 0, "x", "x"]);
+  } else if (e.key === "5") {
+    emitChord(["x", "x", "x", "x", 0, "x"]);
   }
 };
 window.addEventListener("keydown", handleInput);

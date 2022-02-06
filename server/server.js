@@ -1,3 +1,5 @@
+const UPDATES_PER_SEC = 120;
+
 /*
 |--------------------------------------------------------------------------
 | server.js -- The core of your server
@@ -26,12 +28,14 @@ const express = require("express"); // backend framework for our node server.
 const session = require("express-session"); // library that stores info about each connected user
 const mongoose = require("mongoose"); // library to connect to MongoDB
 const path = require("path"); // provide utilities for working with file and directory paths
+const WebSocketServer = require('websocket').server;
 
 const api = require("./api");
 const auth = require("./auth");
+const logic = require('./logic');
 
 // socket stuff
-const socketManager = require("./server-socket");
+// const socketManager = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
@@ -99,8 +103,35 @@ app.use((err, req, res, next) => {
 // hardcode port to 3000 for now
 const port = process.env.PORT || 3000;
 const server = http.Server(app);
-socketManager.init(server);
+// socketManager.init(server);
 
 server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
+});
+
+const wsServer = new WebSocketServer({
+    httpServer: server
+});
+
+let connections = [];
+
+wsServer.on('request', function(request) {
+    const connection = request.accept(null, request.origin);
+    connections.push(connection);
+    const interval = setInterval(() => {
+      logic.updateWebState();
+      connection.sendUTF(JSON.stringify(logic.webState));
+    }, 1000 / UPDATES_PER_SEC);
+    connection.on('message', function(message) {
+      console.log('Received Message:', message.utf8Data);
+      connection.sendUTF('Hi this is WebSocket server!');
+      logic.playChord("dummy_user", message.utf8Data);
+      for (var i = 0; i < connections.length; i++) {
+        connections[i].send(message.utf8Data);
+      }
+    });
+    connection.on('close', function(reasonCode, description) {
+        console.log('Client has disconnected.');
+        clearInterval(interval);
+    });
 });

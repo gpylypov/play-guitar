@@ -14,10 +14,13 @@ const Game = () => {
   useEffect(() => {
     initCanvas();
   }, []);
+
   useEffect(() => {
-    socket.on("update", (update) => {
-      processUpdate(update);
-    });
+      socket.addEventListener('message', (event) => {
+        let data = JSON.parse(event.data);
+        console.log(data);
+        processUpdate(data);
+      });
   }, []);
 
   const processUpdate = (update) => {

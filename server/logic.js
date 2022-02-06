@@ -7,7 +7,10 @@ const webState = {
   chord_queue: [], //{chord: the chord, when: how long ago it was sent}
 };
 
+webState.players.push({ uid: 0, waiting: 0 });
+
 const getIndexFromId = (id) => {
+/*
   let returning_index = null;
   for (let i = 0; i < webState.players.length; i++) {
     if (webState.players[i].uid == id) {
@@ -19,6 +22,8 @@ const getIndexFromId = (id) => {
   } else {
     return "big error!";
   }
+  */
+    return 0;
 };
 
 const addPlayer = (id) => {
@@ -43,13 +48,9 @@ const playChord = (id, chord) => {
   // console.log(id);
   // console.log(webState.players);
   // console.log(getIndexFromId(id));
-  if (webState.players[getIndexFromId(id)].waiting === 0) {
-    console.log("Played chord: " + chord);
-    webState.chord_queue.push({ owner: id, chord: chord, when: 0 });
-    webState.players[getIndexFromId(id)].waiting = PLAY_DELAY;
-  } else {
-    console.log("sorry wait a bit");
-  }
+  console.log("Played chord: " + chord);
+  webState.chord_queue.push({ owner: 0, chord: chord, when: 0 });
+  webState.players[getIndexFromId(id)].waiting = PLAY_DELAY;
 };
 
 const updateWebState = () => {

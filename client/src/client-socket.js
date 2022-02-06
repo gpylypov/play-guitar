@@ -1,3 +1,4 @@
+/*
 import socketIOClient from "socket.io-client";
 import { post } from "./utilities";
 const endpoint = window.location.hostname + ":" + window.location.port;
@@ -6,7 +7,15 @@ socket.on("connect", () => {
   post("/api/initsocket", { socketid: socket.id });
 });
 
-/** send a message to the server with the move you made */
+// send a message to the server with the move you made
 export const emitChord = (chord) => {
   socket.emit("emitChord", chord);
 };
+*/
+
+export const socket = new WebSocket('ws://localhost:3000');
+
+export const emitChord = (chord) => {
+  console.log(chord);
+  socket.send(chord);
+}
